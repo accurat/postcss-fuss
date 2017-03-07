@@ -1,0 +1,37 @@
+{
+  "name": "postcss-fuss",
+  "version": "0.0.0",
+  "description": "PostCSS plugin to define and compose Functional CSS rules",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "functional-css",
+    "immutable-css",
+    "functional-style-sheets"
+  ],
+  "author": "caesarsol <smilemachine@gmail.com>",
+  "license": "MIT",
+  "repository": "caesarsol/postcss-fuss",
+  "bugs": {
+    "url": "https://github.com/caesarsol/postcss-fuss/issues"
+  },
+  "homepage": "https://github.com/caesarsol/postcss-fuss",
+  "dependencies": {
+    "postcss": "^5.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^18.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
