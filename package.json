@@ -31,7 +31,9 @@
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5",
     "rules": {
-      "semi": ["warn", "never"]
+      "semi": ["warn", "never"],
+      "comma-dangle": ["warn", "always-multiline"],
+      "no-use-before-define": ["error", "nofunc"]
     },
     "env": {
       "jest": true
