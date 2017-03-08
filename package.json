@@ -30,6 +30,9 @@
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5",
+    "rules": {
+      "semi": ["warn", "never"]
+    },
     "env": {
       "jest": true
     }

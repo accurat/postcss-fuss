@@ -1,13 +1,10 @@
-var postcss = require('postcss');
+var postcss = require('postcss')
 
 module.exports = postcss.plugin('postcss-fuss', function (opts) {
-    opts = opts || {};
+    opts = opts || {}
+    console.log(opts)
 
-    // Work with options here
-
-    return function (root, result) {
-
-        // Transform CSS AST here
-
-    };
-});
+    return function (root) {
+        return root
+    }
+})
