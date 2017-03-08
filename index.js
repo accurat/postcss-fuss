@@ -1,4 +1,4 @@
-var postcss = require('postcss')
+const postcss = require('postcss')
 
 function toCamel(s) {
     return s.replace(/-(.)/g, ([, c]) => c.toUpperCase())

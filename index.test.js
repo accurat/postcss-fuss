@@ -1,6 +1,6 @@
-var postcss = require('postcss')
-var plugin = require('./')
-var fussFunctions = require('./fuss-functions')
+const postcss = require('postcss')
+const plugin = require('./')
+const fussFunctions = require('./fuss-functions')
 
 function removeSpaces(s) {
     return s.toString().replace(/[\n\s]+/g, '')
