@@ -6,6 +6,8 @@
 > [PostCSS](https://github.com/postcss/postcss) plugin to define and compose
 Functional CSS rules.
 
+[![NPM](https://nodei.co/npm/postcss-fuss.png?compact=true)](https://npmjs.org/package/postcss-fuss)
+
 Lots of functional CSS frameworks are emerging in the last days, but none of
 them offers a library of functions to create and manipulate the mono-definition
 rules.
