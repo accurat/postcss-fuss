@@ -1,6 +1,6 @@
 {
   "name": "postcss-fuss",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "PostCSS plugin to define and compose Functional CSS rules",
   "keywords": [
     "postcss",
@@ -31,9 +31,18 @@
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5",
     "rules": {
-      "semi": ["warn", "never"],
-      "comma-dangle": ["warn", "always-multiline"],
-      "no-use-before-define": ["error", "nofunc"]
+      "semi": [
+        "warn",
+        "never"
+      ],
+      "comma-dangle": [
+        "warn",
+        "always-multiline"
+      ],
+      "no-use-before-define": [
+        "error",
+        "nofunc"
+      ]
     },
     "env": {
       "jest": true
