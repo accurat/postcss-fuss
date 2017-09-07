@@ -26,6 +26,15 @@ it('does transform a @fuss function', () => run(`
     .b-blue { border-color: #00f }
 `))
 
+it('does transform a @fuss function containing css variables', () => run(`
+    @fuss color(blue, var(--blue));
+`, `
+    /* color(blue, var(--blue)) */
+    .c-blue { color: var(--blue) }
+    .bg-blue { background-color: var(--blue) }
+    .b-blue { border-color: var(--blue) }
+`))
+
 it('does transform a @fuss second-order function', () => run(`
     @fuss color-variants(red, #f00);
 `, `
