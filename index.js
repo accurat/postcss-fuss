@@ -37,7 +37,9 @@ function fussToClasses(rule, fussFunctions) {
     const { params, nodes: children = [] } = rule
     if (!params || !params.includes('(') || !params.endsWith(')'))
         throw new Error(`FUSS: Malformed call: ${params}`)
-    const [name, ...args] = params.split(/\s?[\(\),]\s?/).filter(Boolean)
+    const name = params.slice(0, params.indexOf('('))
+    const argsString = params.slice(params.indexOf('(') + 1, -1)
+    const args = argsString.split(/,\s?/).filter(Boolean)
     const funcName = toCamel(name)
     if (!fussFunctions.hasOwnProperty(funcName))
         throw new Error(`FUSS: Func not existent: ${name}`)
