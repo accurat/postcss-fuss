@@ -7,19 +7,18 @@ module.exports = {
         ]
     },
 
-    colorVariants(name, color) {
-        const normal = this.color(name, color)
-        const dark = normal.map(({ className, prop, value }) => ({
-            className: `${className}-dark`,
-            prop,
-            value: `darken(${value}, 10%)`,
-        }))
-        const light = normal.map(({ className, prop, value }) => ({
-            className: `${className}-light`,
-            prop,
-            value: `lighten(${value}, 10%)`,
-        }))
-        return [].concat(light, dark)
+    colorVariants(rulesBlock) {
+        const variantsBlock = flatMap(rulesBlock, rule => {
+            if (!rule.className) return rule
+
+            const { className, prop, value: color } = rule
+            return [
+                { className: `${className}-light`, prop, value: `color-mod(${color} lightness(+15%))` },
+                { className: `${className}-dark`, prop, value: `color-mod(${color} lightness(-15%))` },
+            ]
+        })
+
+        return rulesBlock.concat(variantsBlock)
     },
 
     responsive(rulesBlock) {
