@@ -21,6 +21,21 @@ module.exports = {
         return rulesBlock.concat(variantsBlock)
     },
 
+    colorStates(rulesBlock) {
+        const statesBlock = flatMap(rulesBlock, rule => {
+            if (!rule.className) return rule
+
+            const { className, prop, value } = rule
+            return [
+                { className: `hover-${className}:hover`, prop, value },
+                { className: `active-${className}:active`, prop, value },
+                { className: `focus-${className}:focus`, prop, value },
+            ]
+        })
+
+        return rulesBlock.concat(statesBlock)
+    },
+
     responsive(rulesBlock) {
         const blockM = rulesBlock.map((rule) => {
             if (!rule.className) return rule
