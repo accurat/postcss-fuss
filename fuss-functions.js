@@ -1,9 +1,9 @@
 module.exports = {
     color(name, color) {
         return [
-            { className: `c-${name}`,  prop: 'color',            value: color },
+            { className: name, prop: 'color', value: color },
             { className: `bg-${name}`, prop: 'background-color', value: color },
-            { className: `b-${name}`,  prop: 'border-color',     value: color },
+            { className: `b--${name}`, prop: 'border-color', value: color },
         ]
     },
 
