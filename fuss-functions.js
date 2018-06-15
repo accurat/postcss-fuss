@@ -1,3 +1,5 @@
+const flatMap = require('lodash/flatMap')
+
 module.exports = {
     color(name, color) {
         return [
@@ -13,8 +15,16 @@ module.exports = {
 
             const { className, prop, value: color } = rule
             return [
-                { className: `${className}-light`, prop, value: `color-mod(${color} lightness(+15%))` },
-                { className: `${className}-dark`, prop, value: `color-mod(${color} lightness(-15%))` },
+                {
+                    className: `${className}-light`,
+                    prop,
+                    value: `color-mod(${color} lightness(+15%))`,
+                },
+                {
+                    className: `${className}-dark`,
+                    prop,
+                    value: `color-mod(${color} lightness(-15%))`,
+                },
             ]
         })
 
