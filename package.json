@@ -43,6 +43,10 @@
       "no-use-before-define": [
         "error",
         "nofunc"
+      ],
+      "max-len": [
+        "warn",
+        100
       ]
     },
     "env": {
