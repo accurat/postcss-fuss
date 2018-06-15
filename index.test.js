@@ -37,7 +37,7 @@ it('does transform a @fuss function containing css variables', () => run(`
 
 it('does transform a @fuss second-order function', () => run(`
     @fuss color-variants() {
-        .gray { color: #ccc }
+      .gray { color: #ccc }
     }
 `, `
     /* color-variants() */
@@ -95,4 +95,64 @@ it('does transform a @fuss block function with a @fuss fn inside', () => run(`
         .b--red-l { border-color: #f00 }
     }
 
+`))
+
+it('does work with a nesting of three', () => run(`
+    @fuss color-states() {
+      @fuss color-variants() {
+        @fuss color(accent, #BADA55);
+      }
+    }
+`, `
+    /* color-states() */
+
+
+    /* color-variants() */
+
+    /* color(accent, #BADA55) */
+    .accent { color: #BADA55 }
+    .bg-accent { background-color: #BADA55 }
+    .b--accent { border-color: #BADA55 }
+
+    /* color(accent, #BADA55) */
+    .accent-light { color: color-mod(#BADA55 lightness(+15%)) }
+    .accent-dark { color: color-mod(#BADA55 lightness(-15%)) }
+    .bg-accent-light { background-color: color-mod(#BADA55 lightness(+15%)) }
+    .bg-accent-dark { background-color: color-mod(#BADA55 lightness(-15%)) }
+    .b--accent-light { border-color: color-mod(#BADA55 lightness(+15%)) }
+    .b--accent-dark { border-color: color-mod(#BADA55 lightness(-15%)) }
+
+
+    /* color-variants() */
+
+    /* color(accent, #BADA55) */
+    .hover-accent:hover { color: #BADA55 }
+    .active-accent:active { color: #BADA55 }
+    .focus-accent:focus { color: #BADA55 }
+    .hover-bg-accent:hover { background-color: #BADA55 }
+    .active-bg-accent:active { background-color: #BADA55 }
+    .focus-bg-accent:focus { background-color: #BADA55 }
+    .hover-b--accent:hover { border-color: #BADA55 }
+    .active-b--accent:active { border-color: #BADA55 }
+    .focus-b--accent:focus { border-color: #BADA55 }
+
+    /* color(accent, #BADA55) */
+    .hover-accent-light:hover { color: color-mod(#BADA55 lightness(+15%)) }
+    .active-accent-light:active { color: color-mod(#BADA55 lightness(+15%)) }
+    .focus-accent-light:focus { color: color-mod(#BADA55 lightness(+15%)) }
+    .hover-accent-dark:hover { color: color-mod(#BADA55 lightness(-15%)) }
+    .active-accent-dark:active { color: color-mod(#BADA55 lightness(-15%)) }
+    .focus-accent-dark:focus { color: color-mod(#BADA55 lightness(-15%)) }
+    .hover-bg-accent-light:hover { background-color: color-mod(#BADA55 lightness(+15%)) }
+    .active-bg-accent-light:active { background-color: color-mod(#BADA55 lightness(+15%)) }
+    .focus-bg-accent-light:focus { background-color: color-mod(#BADA55 lightness(+15%)) }
+    .hover-bg-accent-dark:hover { background-color: color-mod(#BADA55 lightness(-15%)) }
+    .active-bg-accent-dark:active { background-color: color-mod(#BADA55 lightness(-15%)) }
+    .focus-bg-accent-dark:focus { background-color: color-mod(#BADA55 lightness(-15%)) }
+    .hover-b--accent-light:hover { border-color: color-mod(#BADA55 lightness(+15%)) }
+    .active-b--accent-light:active { border-color: color-mod(#BADA55 lightness(+15%)) }
+    .focus-b--accent-light:focus { border-color: color-mod(#BADA55 lightness(+15%)) }
+    .hover-b--accent-dark:hover { border-color: color-mod(#BADA55 lightness(-15%)) }
+    .active-b--accent-dark:active { border-color: color-mod(#BADA55 lightness(-15%)) }
+    .focus-b--accent-dark:focus { border-color: color-mod(#BADA55 lightness(-15%)) }
 `))
