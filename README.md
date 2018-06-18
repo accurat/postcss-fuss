@@ -53,9 +53,9 @@ See [fuss-functions](../blob/master/fuss-functions.js) for the definitions of th
 
 ```css
 /* color(blue, #00f) */
-.c-blue { color: #00f }
+.blue { color: #00f }
 .bg-blue { background-color: #00f }
-.b-blue { border-color: #00f }
+.b--blue { border-color: #00f }
 
 /* color-variants() */
 .gray { color: #ccc }
