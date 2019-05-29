@@ -18,12 +18,12 @@ module.exports = {
                 {
                     className: `${className}-light`,
                     prop,
-                    value: `color-mod(${color} lightness(+15%))`,
+                    value: `color-mod(${color} lightness(+10%))`,
                 },
                 {
                     className: `${className}-dark`,
                     prop,
-                    value: `color-mod(${color} lightness(-15%))`,
+                    value: `color-mod(${color} lightness(-10%))`,
                 },
             ]
         })
