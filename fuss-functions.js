@@ -38,7 +38,7 @@ module.exports = {
             const { className, prop, value } = rule
             return [
                 { className: `hover-${className}:hover`, prop, value },
-                { className: `active-${className}:active`, prop, value },
+                { className: `active-${className}:hover:active`, prop, value },
                 { className: `focus-${className}:focus`, prop, value },
             ]
         })
