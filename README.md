@@ -59,13 +59,13 @@ See [fuss-functions](../blob/master/fuss-functions.js) for the definitions of th
 
 /* color-variants() */
 .gray { color: #ccc }
-.gray-light { color: color-mod(#ccc lightness(+15%)) }
-.gray-dark { color: color-mod(#ccc lightness(-15%)) }
+.gray-light { color: color-mod(#ccc lightness(+10%)) }
+.gray-dark { color: color-mod(#ccc lightness(-10%)) }
 
 /* color-states() */
 .bg-yellow { background: #ff0 }
 .hover-bg-yellow:hover { background: #ff0 }
-.active-bg-yellow:active { background: #ff0 }
+.active-bg-yellow:hover:active { background: #ff0 }
 .focus-bg-yellow:focus { background: #ff0 }
 
 /* responsive() */
@@ -102,46 +102,46 @@ The real power comes with the block utilities, which can be combined with all th
 .b--accent { border-color: #BADA55 }
 
 /* color(accent, #BADA55) */
-.accent-light { color: color-mod(#BADA55 lightness(+15%)) }
-.accent-dark { color: color-mod(#BADA55 lightness(-15%)) }
-.bg-accent-light { background-color: color-mod(#BADA55 lightness(+15%)) }
-.bg-accent-dark { background-color: color-mod(#BADA55 lightness(-15%)) }
-.b--accent-light { border-color: color-mod(#BADA55 lightness(+15%)) }
-.b--accent-dark { border-color: color-mod(#BADA55 lightness(-15%)) }
+.accent-light { color: color-mod(#BADA55 lightness(+10%)) }
+.accent-dark { color: color-mod(#BADA55 lightness(-10%)) }
+.bg-accent-light { background-color: color-mod(#BADA55 lightness(+10%)) }
+.bg-accent-dark { background-color: color-mod(#BADA55 lightness(-10%)) }
+.b--accent-light { border-color: color-mod(#BADA55 lightness(+10%)) }
+.b--accent-dark { border-color: color-mod(#BADA55 lightness(-10%)) }
 
 
 /* color-variants() */
 
 /* color(accent, #BADA55) */
 .hover-accent:hover { color: #BADA55 }
-.active-accent:active { color: #BADA55 }
+.active-accent:hover:active { color: #BADA55 }
 .focus-accent:focus { color: #BADA55 }
 .hover-bg-accent:hover { background-color: #BADA55 }
-.active-bg-accent:active { background-color: #BADA55 }
+.active-bg-accent:hover:active { background-color: #BADA55 }
 .focus-bg-accent:focus { background-color: #BADA55 }
 .hover-b--accent:hover { border-color: #BADA55 }
-.active-b--accent:active { border-color: #BADA55 }
+.active-b--accent:hover:active { border-color: #BADA55 }
 .focus-b--accent:focus { border-color: #BADA55 }
 
 /* color(accent, #BADA55) */
-.hover-accent-light:hover { color: color-mod(#BADA55 lightness(+15%)) }
-.active-accent-light:active { color: color-mod(#BADA55 lightness(+15%)) }
-.focus-accent-light:focus { color: color-mod(#BADA55 lightness(+15%)) }
-.hover-accent-dark:hover { color: color-mod(#BADA55 lightness(-15%)) }
-.active-accent-dark:active { color: color-mod(#BADA55 lightness(-15%)) }
-.focus-accent-dark:focus { color: color-mod(#BADA55 lightness(-15%)) }
-.hover-bg-accent-light:hover { background-color: color-mod(#BADA55 lightness(+15%)) }
-.active-bg-accent-light:active { background-color: color-mod(#BADA55 lightness(+15%)) }
-.focus-bg-accent-light:focus { background-color: color-mod(#BADA55 lightness(+15%)) }
-.hover-bg-accent-dark:hover { background-color: color-mod(#BADA55 lightness(-15%)) }
-.active-bg-accent-dark:active { background-color: color-mod(#BADA55 lightness(-15%)) }
-.focus-bg-accent-dark:focus { background-color: color-mod(#BADA55 lightness(-15%)) }
-.hover-b--accent-light:hover { border-color: color-mod(#BADA55 lightness(+15%)) }
-.active-b--accent-light:active { border-color: color-mod(#BADA55 lightness(+15%)) }
-.focus-b--accent-light:focus { border-color: color-mod(#BADA55 lightness(+15%)) }
-.hover-b--accent-dark:hover { border-color: color-mod(#BADA55 lightness(-15%)) }
-.active-b--accent-dark:active { border-color: color-mod(#BADA55 lightness(-15%)) }
-.focus-b--accent-dark:focus { border-color: color-mod(#BADA55 lightness(-15%)) }
+.hover-accent-light:hover { color: color-mod(#BADA55 lightness(+10%)) }
+.active-accent-light:hover:active { color: color-mod(#BADA55 lightness(+10%)) }
+.focus-accent-light:focus { color: color-mod(#BADA55 lightness(+10%)) }
+.hover-accent-dark:hover { color: color-mod(#BADA55 lightness(-10%)) }
+.active-accent-dark:hover:active { color: color-mod(#BADA55 lightness(-10%)) }
+.focus-accent-dark:focus { color: color-mod(#BADA55 lightness(-10%)) }
+.hover-bg-accent-light:hover { background-color: color-mod(#BADA55 lightness(+10%)) }
+.active-bg-accent-light:hover:active { background-color: color-mod(#BADA55 lightness(+10%)) }
+.focus-bg-accent-light:focus { background-color: color-mod(#BADA55 lightness(+10%)) }
+.hover-bg-accent-dark:hover { background-color: color-mod(#BADA55 lightness(-10%)) }
+.active-bg-accent-dark:hover:active { background-color: color-mod(#BADA55 lightness(-10%)) }
+.focus-bg-accent-dark:focus { background-color: color-mod(#BADA55 lightness(-10%)) }
+.hover-b--accent-light:hover { border-color: color-mod(#BADA55 lightness(+10%)) }
+.active-b--accent-light:hover:active { border-color: color-mod(#BADA55 lightness(+10%)) }
+.focus-b--accent-light:focus { border-color: color-mod(#BADA55 lightness(+10%)) }
+.hover-b--accent-dark:hover { border-color: color-mod(#BADA55 lightness(-10%)) }
+.active-b--accent-dark:hover:active { border-color: color-mod(#BADA55 lightness(-10%)) }
+.focus-b--accent-dark:focus { border-color: color-mod(#BADA55 lightness(-10%)) }
 ```
 
 ## Future improvements
