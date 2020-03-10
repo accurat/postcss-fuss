@@ -157,8 +157,6 @@ and that's the fastest route to try it online for now.
 
 ## Usage
 
-**Note**: Support is only for Node > 6, just out of my JS habit. Drop a line if you'd like a legacy version.
-
 ```js
 const fussPlugin = require('postcss-fuss')
 const fussFunctions = require('postcss-fuss/fuss-functions') // Or define your own!

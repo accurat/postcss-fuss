@@ -17,6 +17,10 @@
     "url": "https://github.com/caesarsol/postcss-fuss/issues"
   },
   "homepage": "https://github.com/caesarsol/postcss-fuss",
+  "engines": {
+    "node": ">=10",
+    "yarn": ">=1.2.1"
+  },
   "dependencies": {
     "lodash": "^4.17.10",
     "postcss": "^5.2.6"
