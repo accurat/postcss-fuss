@@ -1,25 +1,49 @@
+const flatMap = require('lodash/flatMap')
+
 module.exports = {
     color(name, color) {
         return [
-            { className: `c-${name}`,  prop: 'color',            value: color },
+            { className: name, prop: 'color', value: color },
             { className: `bg-${name}`, prop: 'background-color', value: color },
-            { className: `b-${name}`,  prop: 'border-color',     value: color },
+            { className: `b--${name}`, prop: 'border-color', value: color },
         ]
     },
 
-    colorVariants(name, color) {
-        const normal = this.color(name, color)
-        const dark = normal.map(({ className, prop, value }) => ({
-            className: `${className}-dark`,
-            prop,
-            value: `darken(${value}, 10%)`,
-        }))
-        const light = normal.map(({ className, prop, value }) => ({
-            className: `${className}-light`,
-            prop,
-            value: `lighten(${value}, 10%)`,
-        }))
-        return [].concat(light, dark)
+    colorVariants(rulesBlock) {
+        const variantsBlock = flatMap(rulesBlock, rule => {
+            if (!rule.className) return rule
+
+            const { className, prop, value: color } = rule
+            return [
+                {
+                    className: `${className}-light`,
+                    prop,
+                    value: `color-mod(${color} lightness(+10%))`,
+                },
+                {
+                    className: `${className}-dark`,
+                    prop,
+                    value: `color-mod(${color} lightness(-10%))`,
+                },
+            ]
+        })
+
+        return rulesBlock.concat(variantsBlock)
+    },
+
+    colorStates(rulesBlock) {
+        const statesBlock = flatMap(rulesBlock, rule => {
+            if (!rule.className) return rule
+
+            const { className, prop, value } = rule
+            return [
+                { className: `hover-${className}:hover`, prop, value },
+                { className: `active-${className}:hover:active`, prop, value },
+                { className: `focus-${className}:focus`, prop, value },
+            ]
+        })
+
+        return rulesBlock.concat(statesBlock)
     },
 
     responsive(rulesBlock) {

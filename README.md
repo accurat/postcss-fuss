@@ -21,7 +21,7 @@ Using [Tachyons](http://tachyons.io/) for example I often have to define at leas
 
 - `.red { color: red }`
 - `.bg-red { background-color: red }`
-- `.b-red { border-color: red }`
+- `.b--red { border-color: red }`
 
 And I'm not even starting to talk about responsive rules!
 
@@ -30,11 +30,16 @@ declarations out by using the sacred concept of **functions**.
 
 Enters *FUSS*, which stands for **FU**nctional **S**tyle **S**heets.
 
-#### Input
+#### Input:
 
 ```sass
 @fuss color(blue, #00f);
-@fuss color-variants(red, #f00);
+@fuss color-variants() {
+  .gray { color: #ccc }
+}
+@fuss color-states() {
+  .bg-yellow { background: #ff0 }
+}
 @fuss responsive() {
   .w-50 { width: 50% }
 }
@@ -48,17 +53,20 @@ See [fuss-functions](../blob/master/fuss-functions.js) for the definitions of th
 
 ```css
 /* color(blue, #00f) */
-.c-blue { color: #00f }
+.blue { color: #00f }
 .bg-blue { background-color: #00f }
-.b-blue { border-color: #00f }
+.b--blue { border-color: #00f }
 
-/* color-variants(red, #f00) */
-.c-red-light { color: lighten(#f00, 10%) }
-.bg-red-light { background-color: lighten(#f00, 10%) }
-.b-red-light { border-color: lighten(#f00, 10%) }
-.c-red-dark { color: darken(#f00, 10%) }
-.bg-red-dark { background-color: darken(#f00, 10%) }
-.b-red-dark { border-color: darken(#f00, 10%) }
+/* color-variants() */
+.gray { color: #ccc }
+.gray-light { color: color-mod(#ccc lightness(+15%)) }
+.gray-dark { color: color-mod(#ccc lightness(-15%)) }
+
+/* color-states() */
+.bg-yellow { background: #ff0 }
+.hover-bg-yellow:hover { background: #ff0 }
+.active-bg-yellow:active { background: #ff0 }
+.focus-bg-yellow:focus { background: #ff0 }
 
 /* responsive() */
 .w-50 { width: 50% }
@@ -66,15 +74,80 @@ See [fuss-functions](../blob/master/fuss-functions.js) for the definitions of th
 @media screen and (min-width: 1024px) { .w-50-l { width: 50% } }
 ```
 
-This example will of course need the [postcss-color-function](https://github.com/postcss/postcss-color-function) plugin to work.
+**NOTE**: The color-variants functions outputs [spec-compliant](https://www.w3.org/TR/css-color-4/#funcdef-color-mod) code containing the color-mod() function, but this isn't supported in any browser yet, so you will need to use the [postcss-color-mod-function](https://github.com/jonathantneal/postcss-color-mod-function) postcss plugin to work.
 
-The real power comes with the responsive utilities, which can be combined with all the other FUSS functions.
+The real power comes with the block utilities, which can be combined with all the other FUSS functions. For example you can combine the color functions to choose the color only once, and have every class available.
+
+#### Input:
+
+```sass
+@fuss color-states() {
+  @fuss color-variants() {
+    @fuss color(accent, #BADA55);
+  }
+}
+```
+
+#### Output:
+
+```css
+/* color-states() */
+
+
+/* color-variants() */
+
+/* color(accent, #BADA55) */
+.accent { color: #BADA55 }
+.bg-accent { background-color: #BADA55 }
+.b--accent { border-color: #BADA55 }
+
+/* color(accent, #BADA55) */
+.accent-light { color: color-mod(#BADA55 lightness(+15%)) }
+.accent-dark { color: color-mod(#BADA55 lightness(-15%)) }
+.bg-accent-light { background-color: color-mod(#BADA55 lightness(+15%)) }
+.bg-accent-dark { background-color: color-mod(#BADA55 lightness(-15%)) }
+.b--accent-light { border-color: color-mod(#BADA55 lightness(+15%)) }
+.b--accent-dark { border-color: color-mod(#BADA55 lightness(-15%)) }
+
+
+/* color-variants() */
+
+/* color(accent, #BADA55) */
+.hover-accent:hover { color: #BADA55 }
+.active-accent:active { color: #BADA55 }
+.focus-accent:focus { color: #BADA55 }
+.hover-bg-accent:hover { background-color: #BADA55 }
+.active-bg-accent:active { background-color: #BADA55 }
+.focus-bg-accent:focus { background-color: #BADA55 }
+.hover-b--accent:hover { border-color: #BADA55 }
+.active-b--accent:active { border-color: #BADA55 }
+.focus-b--accent:focus { border-color: #BADA55 }
+
+/* color(accent, #BADA55) */
+.hover-accent-light:hover { color: color-mod(#BADA55 lightness(+15%)) }
+.active-accent-light:active { color: color-mod(#BADA55 lightness(+15%)) }
+.focus-accent-light:focus { color: color-mod(#BADA55 lightness(+15%)) }
+.hover-accent-dark:hover { color: color-mod(#BADA55 lightness(-15%)) }
+.active-accent-dark:active { color: color-mod(#BADA55 lightness(-15%)) }
+.focus-accent-dark:focus { color: color-mod(#BADA55 lightness(-15%)) }
+.hover-bg-accent-light:hover { background-color: color-mod(#BADA55 lightness(+15%)) }
+.active-bg-accent-light:active { background-color: color-mod(#BADA55 lightness(+15%)) }
+.focus-bg-accent-light:focus { background-color: color-mod(#BADA55 lightness(+15%)) }
+.hover-bg-accent-dark:hover { background-color: color-mod(#BADA55 lightness(-15%)) }
+.active-bg-accent-dark:active { background-color: color-mod(#BADA55 lightness(-15%)) }
+.focus-bg-accent-dark:focus { background-color: color-mod(#BADA55 lightness(-15%)) }
+.hover-b--accent-light:hover { border-color: color-mod(#BADA55 lightness(+15%)) }
+.active-b--accent-light:active { border-color: color-mod(#BADA55 lightness(+15%)) }
+.focus-b--accent-light:focus { border-color: color-mod(#BADA55 lightness(+15%)) }
+.hover-b--accent-dark:hover { border-color: color-mod(#BADA55 lightness(-15%)) }
+.active-b--accent-dark:active { border-color: color-mod(#BADA55 lightness(-15%)) }
+.focus-b--accent-dark:focus { border-color: color-mod(#BADA55 lightness(-15%)) }
+```
 
 ## Future improvements
 
 More FUSS functions examples are to come, such as:
 - Measure definition: a single FUSS rule to define a single measure for margin, padding, border, width, height...
-- Block rule for `:hover` states: just adds `-hover:hover` to the class name to enable the rule in hover.
 - Anything else you can think of! Write a rule and try it right away, make a PR if you care to contribute!
 
 ## Try
